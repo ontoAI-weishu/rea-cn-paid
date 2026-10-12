@@ -1,5 +1,18 @@
 # 变更记录 · REA逆向工程审计包·国产适配（付费版）
 
+## [1.2.2] - 2026-10-13
+
+- **新增：无插件环境的支付兜底（方案 B / code_url）**。
+  此前 402 响应只含 `paymentCode`，唯一支付路径是 `weixinpay_pay` 插件——
+  用户把技能装到**没有微信支付插件的客户端**（Claude Code、其他 MCP 宿主等，GitHub/ClawHub 直装常见）时会卡死在付费一步。
+  现在网关 402 响应额外下发 `code_url`（微信 Native 扫码链接，与 paymentCode 指向**同一订单**），
+  `pay-gate.mjs` 输出**双路支付指引**：
+  - 2a. 有 weixinpay 插件 → paymentCode 弹支付卡片（与 1.2.1 行为一致）；
+  - 2b. 无插件/插件不可用 → Agent 将 `code_url` 渲染为微信二维码，用户扫码支付 ¥1.9。
+- **向后兼容**：402 的 `WeixinPay-Required` 字段保留不变，**v1.2.1 老包无需升级即可继续正常付费**（SkillHub 保持 1.2.1）。
+- 履约链路零改动：`--resume` 走微信查单（`trade_state == SUCCESS`），扫码支付与插件支付同单同验。
+- 本版本仅面向 GitHub / ClawHub 渠道分发；SkillHub 渠道维持 1.2.1（平台自带微信支付插件，无此短板）。
+
 ## [1.2.1] - 2026-10-13
 
 ### 修正
