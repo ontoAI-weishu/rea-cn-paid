@@ -2,7 +2,7 @@
 name: rea-cn-paid
 slug: rea-cn-paid
 displayName: REA逆向工程审计包·国产适配（付费版）
-version: 1.2.0
+version: 1.2.1
 summary: >-
   REA 逆向工程审计包·国产适配（付费版）：把 170 个 MCP 逆向分析工具适配到中文 LLM 环境，
   用于原生/托管/Electron·JS/打包产物/固件/浏览器目标的研究学习、安全审计与版本比对，按调用量计费 ¥1.9/次（24 小时内不限次）。
