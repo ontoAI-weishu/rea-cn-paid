@@ -1,5 +1,15 @@
 # 变更记录 · REA逆向工程审计包·国产适配（付费版）
 
+## [1.2.1] - 2026-10-13
+
+### 修正
+- 上游引擎 MIT 授权文件 `LICENSE-ENGINE.md` → 更名为 **`engine-LICENSE-MIT.md`**：
+  以 `LICENSE` 开头的文件名会被 GitHub 自动识别为整包许可证（误显示 MIT），
+  与"付费产品"的主张冲突；改名后 GitHub 正确识别为 `NOASSERTION`（自定义授权，匹配 `LICENSE.md`）。
+- 同步：SKILL.md / README.md / LICENSE.md 内的引用路径一并更新。
+
+---
+
 ## [1.2.0] - 2026-10-13
 
 ### 安全加固①：权益凭证改为服务端签名（Ed25519），本地可验不可伪造
@@ -23,7 +33,7 @@
 - `SKILL.md` frontmatter `license` 同步改为 `自有商业授权（见 LICENSE.md；上游引擎为 MIT，见 LICENSE-ENGINE.md）`。
 
 ### 其他
-- 网关 `SKILL_VERSION` 1.1.0 → **1.2.0**（config.py 默认值 + 服务器 `.env` 同步，避免 .env 覆盖默认值）。
+- 网关 `SKILL_VERSION` 1.1.0 → **1.2.0 → 1.2.1**（config.py 默认值 + 服务器 `.env` 同步，避免 .env 覆盖默认值）。
 - `Dockerfile` 增加 `COPY keys/ ./keys/`；`.env` 增加 `ENTITLEMENT_PRIVATE_KEY_PATH=/app/keys/entitlement_ed25519_private.pem`。
 
 ---
