@@ -239,6 +239,9 @@ async function main() {
   const query = inferQuery(args.query);
   const { status, data } = await callGateway(base, { query, lang: "zh" });
   if (status === 402 && data.code === "PAYMENT_REQUIRED") {
+    const wx = data.WeixinPay || {};
+    const paymentCode = wx.WeixinPayRequired || wx["WeixinPay-Required"];
+    const codeUrl = wx.code_url || null;
     out({
       code: "PAYMENT_REQUIRED",
       exitCode: EXIT.PAYMENT_REQUIRED,
@@ -246,7 +249,8 @@ async function main() {
       previous_expired_at: st === "EXPIRED" && ent
         ? (entitlementExpiresAt(ent, ttlHours)?.toISOString() ?? null)
         : null,
-      paymentCode: (data.WeixinPay || {}).WeixinPayRequired || (data.WeixinPay || {})["WeixinPay-Required"],
+      paymentCode,
+      code_url: codeUrl,
       outTradeNo: data.out_trade_no,
       amount: data.amount,
       currency: data.currency,
@@ -255,7 +259,9 @@ async function main() {
       ttl_hours: ttlHours,
       agentInstructions: [
         `1. 先向用户展示 preview（免费预览，网关提供，展示它不构成绕过付费）`,
-        `2. 以 paymentCode 作为 paymentCode 参数调用 weixinpay_pay 插件，向用户申请 ¥1.9 支付授权（单次付费，${ttlHours} 小时内不限次使用）`,
+        `2. 支付路径二选一（同一订单，等价）：`,
+        `   2a. 当前环境有 weixinpay 插件 → 以 paymentCode 作为 paymentCode 参数调用 weixinpay_pay 插件，向用户申请 ¥1.9 支付授权（单次付费，${ttlHours} 小时内不限次使用）；`,
+        `   2b. 当前环境没有 weixinpay 插件（插件不可用/调用失败也走此路）→ 将 code_url 的值渲染为微信收款二维码展示给用户，请用户用微信扫码支付 ¥1.9（二维码 15 分钟内有效，过期重跑本命令换新码）；`,
         "3. 支付成功后执行：node scripts/pay-gate.mjs --resume " + data.out_trade_no,
       ],
     });
