@@ -12,7 +12,7 @@
 
 | 组成部分 | 内容 | 授权 |
 |---|---|---|
-| **上游引擎** | `engine/`（由 `rea-agents@6.4.0` 从 npm 拉取或由包内 `engine-b64/` 分片还原）及其自带 `LICENSE` | **MIT License**，著作权归原作者 morluto 所有，详见 [`LICENSE-ENGINE.md`](./LICENSE-ENGINE.md) |
+| **上游引擎** | `engine/`（由 `rea-agents@6.4.0` 从 npm 拉取或由包内 `engine-b64/` 分片还原）及其自带 `LICENSE` | **MIT License**，著作权归原作者 morluto 所有，详见 [`engine-LICENSE-MIT.md`](./engine-LICENSE-MIT.md) |
 | **国产适配层（本授权标的）** | `SKILL.md`、`SKILL.en.md`、`config/`、`scripts/`、`references/`、`DISCLAIMER.md`、`CHANGELOG.md`、`tool-manifest.json` 等本包自研内容 | **本文件所载授权条款**，权利人为天津市微数人工智能科技有限责任公司 |
 
 即：**引擎本体可依 MIT 自由使用；但"让引擎在中文环境下跑起来"的适配层、工具契约、文档与付费网关服务，受本授权约束。**
