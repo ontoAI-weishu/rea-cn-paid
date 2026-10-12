@@ -78,7 +78,7 @@ node scripts/run-mcp.mjs
 
 | 组成部分 | 授权 |
 |---|---|
-| `engine/`（上游 `rea-agents@6.4.0`） | **MIT**，原作者 morluto，见 [`LICENSE-ENGINE.md`](./LICENSE-ENGINE.md) |
+| `engine/`（上游 `rea-agents@6.4.0`） | **MIT**，原作者 morluto，见 [`engine-LICENSE-MIT.md`](./engine-LICENSE-MIT.md) |
 | 适配层（`SKILL.md` / `config/` / `scripts/` / `references/` / 文档） | **权利人自有商业授权**，见 [`LICENSE.md`](./LICENSE.md) —— 付费使用、禁止再分发、禁止绕过付费闸 |
 
 ---
@@ -89,7 +89,7 @@ node scripts/run-mcp.mjs
 SKILL.md / SKILL.en.md      技能主文档（frontmatter 含 slug / 版本 / 定价）
 DISCLAIMER.md               免责声明
 LICENSE.md                  自有授权（适配层）
-LICENSE-ENGINE.md           上游引擎 MIT 授权
+engine-LICENSE-MIT.md           上游引擎 MIT 授权
 CHANGELOG.md                变更记录
 README.md                   本文件
 config/cn-config.json       网关地址 / 价格 / 24h 时效 / 引擎 SHA256
