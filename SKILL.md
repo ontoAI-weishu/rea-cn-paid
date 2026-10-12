@@ -6,7 +6,7 @@ version: 1.2.0
 summary: >-
   REA 逆向工程审计包·国产适配（付费版）：把 170 个 MCP 逆向分析工具适配到中文 LLM 环境，
   用于原生/托管/Electron·JS/打包产物/固件/浏览器目标的研究学习、安全审计与版本比对，按调用量计费 ¥1.9/次（24 小时内不限次）。
-license: 自有商业授权（见 LICENSE.md；上游引擎为 MIT，见 LICENSE-ENGINE.md）
+license: 自有商业授权（见 LICENSE.md；上游引擎为 MIT，见 engine-LICENSE-MIT.md）
 tags: [逆向工程, 安全审计, 国产大模型适配]
 pricing:
   model: per_call
@@ -207,7 +207,7 @@ REA 通过 MCP 把 170 个工具交给 LLM 调用，**因此所选模型必须�
 | `references/install-guide.md` | 国内安装与自更新指引 |
 | `DISCLAIMER.md` | 免责声明全文（独立存档） |
 | `LICENSE.md` | **本技能包授权**：国产适配层为权利人自有商业授权（付费使用、禁止再分发） |
-| `LICENSE-ENGINE.md` | **上游引擎授权**：`engine/` 部分适用 MIT（原作者 morluto） |
+| `engine-LICENSE-MIT.md` | **上游引擎授权**：`engine/` 部分适用 MIT（原作者 morluto） |
 
 ## 7. 付费与运行脚本（实质性改造代码）
 
